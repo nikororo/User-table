@@ -11,6 +11,9 @@ const styles = (theme) => ({
   edit: {
     display: "none",
   },
+  warning: {
+    boxShadow: "0 0 7px 0px rgba(255,0,0,0.6) inset",
+  },
 });
 
 class List extends Component {
@@ -19,6 +22,7 @@ class List extends Component {
     this.state = {
       editablePerson: null,
       oldPerson: null,
+      warning: false,
     };
     this.editLastNameInput = createRef();
     this.editFirstNameInput = createRef();
@@ -27,13 +31,16 @@ class List extends Component {
 
   deletePerson(person) {
     if (this.state.editablePerson === person) {
-      this.setState({ editablePerson: null });
+      this.clearEditablePerson();
     }
     this.props.onDeletePerson(person);
   }
 
   setEditablePerson(editPerson) {
-    if (this.state.editablePerson) return;
+    if (this.state.editablePerson) {
+      this.setState({ warning: true });
+      return;
+    }
     this.setState({ editablePerson: editPerson });
   }
 
@@ -53,7 +60,10 @@ class List extends Component {
   };
 
   clearEditablePerson = () => {
-    this.setState({ editablePerson: null });
+    this.setState({
+      editablePerson: null,
+      warning: false,
+    });
   };
 
   render() {
@@ -63,7 +73,10 @@ class List extends Component {
       <>
         {list.map((person, index) =>
           person === this.state.editablePerson ? (
-            <TableRow key={index}>
+            <TableRow
+              key={index}
+              className={this.state.warning ? classes.warning : ""}
+            >
               <TableCell>
                 <form
                   onSubmit={this.saveEditablePerson}

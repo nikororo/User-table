@@ -1,14 +1,24 @@
 const initialState = {
   list: [
     {
-      lastName: "Печуркина",
-      firstName: "Екатерина",
+      lastName: "Галкина",
+      firstName: "Анна",
       email: "nikoro@gmail.com",
     },
     {
       lastName: "Петрова",
       firstName: "Елена",
-      email: "niko@gmail.com",
+      email: "niko5@gmail.com",
+    },
+    {
+      lastName: "Сивкова",
+      firstName: "Елена",
+      email: "niko4@gmail.com",
+    },
+    {
+      lastName: "Визиряко",
+      firstName: "Анастасия",
+      email: "niko2@gmail.com",
     },
   ],
 };
