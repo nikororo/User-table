@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import List from './list'
+import ListContainer from './list'
 import {
   Container,
   Grid
@@ -22,7 +22,7 @@ class App extends Component {
       <Grid container alignItems="center" className={classes.page_container}>
         <Container maxWidth={'md'}>
           <Provider store={store}>
-            <List />
+            <ListContainer />
           </Provider>
         </Container>
       </Grid>
